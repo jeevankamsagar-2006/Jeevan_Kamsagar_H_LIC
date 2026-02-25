@@ -1,7 +1,7 @@
 # LIC LAB  
 # EXPERIMENT 01  
 # DESIGN AND ANALYSIS OF COMMON SOURCE (CS) AMPLIFIER  
-# TSMC 180nm TECHNOLOGY
+# TSMC 180nm TECHNOLOGY  
 
 ---
 
@@ -15,7 +15,7 @@ Key characteristics of a CS amplifier:
 
 - Provides voltage amplification  
 - Produces 180° phase inversion  
-- Gain approximately equals −gmRD  
+- Gain approximately equals −gₘRᴰ  
 - High input impedance  
 - Bandwidth controlled by output RC network  
 
@@ -56,7 +56,7 @@ And to evaluate:
 # Circuit Diagram
 
 <p align="center">
-<img src="https://github.com/jeevankamsagar-2006/Jeevan_Kamsagar_H_LIC/blob/e47105fa44cfbfe675f905352982fe2524b36743/Experiment-01-CS-Amplifier/dc-analysis.jpeg" width="750">
+<img src="https://github.com/jeevankamsagar-2006/Jeevan_Kamsagar_H_LIC/blob/58adf187a181793e98582104eff58aaa8e2d0759/Experiment-01-CS-Amplifier/dc-analysis.jpeg" width="750">
 </p>
 
 <p align="center">
@@ -69,8 +69,6 @@ Figure: Common Source Amplifier Circuit in LTSpice
 
 ## 1. Power Constraint Derivation
 
-The total DC power consumption is:
-
 <p align="center">
 P = V<sub>DD</sub> × I<sub>D</sub>
 </p>
@@ -81,13 +79,9 @@ Given:
 P ≤ 1 mW
 </p>
 
-Maximum allowable drain current:
-
 <p align="center">
 I<sub>D(max)</sub> = P / V<sub>DD</sub>
 </p>
-
-Substituting values:
 
 <p align="center">
 I<sub>D(max)</sub> = (1 × 10<sup>−3</sup>) / 1.8
@@ -101,13 +95,11 @@ I<sub>D(max)</sub> = 555.5 µA
 
 ## 2. Selection of Design Drain Current
 
-To maintain safe margin and stable operation:
+Chosen:
 
 <p align="center">
 I<sub>D</sub> = 200 µA
 </p>
-
-Power consumption:
 
 <p align="center">
 P = 1.8 × 200 × 10<sup>−6</sup>
@@ -117,20 +109,18 @@ P = 1.8 × 200 × 10<sup>−6</sup>
 P = 360 µW
 </p>
 
-This satisfies the power constraint.
+Power constraint satisfied.
 
 ---
 
 ## 3. Output Voltage Selection
-
-For maximum symmetrical swing:
 
 <p align="center">
 V<sub>DS</sub> ≈ V<sub>DD</sub> / 2
 </p>
 
 <p align="center">
-V<sub>DS</sub> = 1.8 / 2 = 0.9 V
+V<sub>DS</sub> = 0.9 V
 </p>
 
 ---
@@ -146,14 +136,8 @@ R<sub>D</sub> = (1.8 − 0.9) / (200 × 10<sup>−6</sup>)
 </p>
 
 <p align="center">
-R<sub>D</sub> = 0.9 / 0.0002
-</p>
-
-<p align="center">
 R<sub>D</sub> = 4500 Ω
 </p>
-
-Final value:
 
 **RD = 4.5 kΩ**
 
@@ -161,33 +145,19 @@ Final value:
 
 ## 5. Saturation Verification
 
-Saturation condition:
-
 <p align="center">
 V<sub>DS</sub> ≥ V<sub>GS</sub> − V<sub>T</sub>
 </p>
 
-Choose:
-
 <p align="center">
-V<sub>GS</sub> = 0.9 V
+V<sub>GS</sub> − V<sub>T</sub> = 0.9 − 0.366 = 0.534 V
 </p>
-
-<p align="center">
-V<sub>GS</sub> − V<sub>T</sub> = 0.9 − 0.366
-</p>
-
-<p align="center">
-V<sub>GS</sub> − V<sub>T</sub> = 0.534 V
-</p>
-
-Since:
 
 <p align="center">
 0.9 > 0.534
 </p>
 
-The MOSFET operates in the saturation region.
+Device operates in saturation.
 
 ---
 
@@ -221,10 +191,8 @@ A<sub>v</sub> = − (0.749 × 10<sup>−3</sup>) × 4500
 A<sub>v</sub> = −3.37
 </p>
 
-Gain in dB:
-
 <p align="center">
-20 log<sub>10</sub>(3.37) = 10.55 dB
+Gain (dB) = 20 log<sub>10</sub>(3.37) = 10.55 dB
 </p>
 
 ---
@@ -232,12 +200,26 @@ Gain in dB:
 ## DC Simulation Result
 
 <p align="center">
-<img src="Experiment-01-CS-Amplifier/dc-analysis.jpeg" width="750">
+I<sub>D(sim)</sub> = 201.649 µA  
 </p>
 
 <p align="center">
-Figure: DC Operating Point Result
+V<sub>out(sim)</sub> = 0.9074 V  
 </p>
+
+Drain current error:
+
+<p align="center">
+0.824 %
+</p>
+
+Output voltage error:
+
+<p align="center">
+0.82 %
+</p>
+
+Agreement within 1%.
 
 ---
 
@@ -247,77 +229,76 @@ Figure: DC Operating Point Result
 
 SINE(0.9 10m 1k)
 
-- DC offset = 0.9 V  
-- Amplitude = 10 mV  
-- Frequency = 1 kHz  
-
-Small signal condition:
-
 <p align="center">
 10 mV << 0.534 V
 </p>
 
-Valid small-signal operation.
+Valid small-signal condition.
 
 ---
 
-## Measured Gain
+## Gain Comparison
+
+Theoretical:
 
 <p align="center">
-A<sub>v</sub> = V<sub>out(pp)</sub> / V<sub>in(pp)</sub>
+A<sub>v</sub> = −3.37
 </p>
 
-Expected gain ≈ 3.3
+Simulated:
+
+<p align="center">
+A<sub>v(sim)</sub> ≈ −3.3
+</p>
+
+Gain error:
+
+<p align="center">
+≈ 2.07 %
+</p>
+
+Reason:
+
+<p align="center">
+A<sub>v</sub> = −g<sub>m</sub> (R<sub>D</sub> || r<sub>o</sub>)
+</p>
+
+Finite output resistance reduces gain slightly.
 
 ---
 
-## Transient Results
+## Transient Waveforms
 
 <p align="center">
-<img src="Experiment-01-CS-Amplifier/transient%201.jpeg" width="750">
+<img src="https://github.com/jeevankamsagar-2006/Jeevan_Kamsagar_H_LIC/blob/58adf187a181793e98582104eff58aaa8e2d0759/Experiment-01-CS-Amplifier/transient%201.jpeg" width="750">
 </p>
 
 <p align="center">
-Figure: Transient Response – Waveform 1
+<img src="https://github.com/jeevankamsagar-2006/Jeevan_Kamsagar_H_LIC/blob/58adf187a181793e98582104eff58aaa8e2d0759/Experiment-01-CS-Amplifier/transient%202.jpeg" width="750">
 </p>
 
-<p align="center">
-<img src="Experiment-01-CS-Amplifier/transient%202.jpeg" width="750">
-</p>
-
-<p align="center">
-Figure: Transient Response – Waveform 2
-</p>
-
-The output waveform is inverted and amplified, confirming CS operation.
+Output is inverted and amplified.
 
 ---
 
 # AC ANALYSIS
 
-## AC Setup
-
-- AC amplitude = 1  
-- Command: `.ac dec 100 1 1G`
-
-Plot:
-
-V(vout) / V(vin)
-
----
-
-## 3dB Frequency Calculation
+## 3dB Frequency (Theory)
 
 <p align="center">
 f<sub>3dB</sub> = 1 / (2π R<sub>D</sub> C<sub>L</sub>)
 </p>
 
 <p align="center">
-f<sub>3dB</sub> = 1 / (2π × 4500 × 10pF)
+f<sub>3dB</sub> = 3.53 MHz
 </p>
 
+---
+
+## Simulated 3dB Frequency
+
 <p align="center">
-f<sub>3dB</sub> = 3.53 MHz
+f<sub>3dB(sim)</sub> ≈ 3.2 – 3.6 MHz
 </p>
 
 ---
@@ -329,69 +310,70 @@ UGB = A<sub>v</sub> × f<sub>3dB</sub>
 </p>
 
 <p align="center">
-UGB = 3.37 × 3.53
+UGB = 3.37 × 3.53 = 11.9 MHz
 </p>
 
+Simulated:
+
 <p align="center">
-UGB = 11.9 MHz
+≈ 11 – 12 MHz
 </p>
 
 ---
 
-## AC Results
+## AC Plots
 
 <p align="center">
-<img src="Experiment-01-CS-Amplifier/ac-analysis%201.jpeg" width="750">
+<img src="https://github.com/jeevankamsagar-2006/Jeevan_Kamsagar_H_LIC/blob/58adf187a181793e98582104eff58aaa8e2d0759/Experiment-01-CS-Amplifier/ac-analysis%201.jpeg" width="750">
 </p>
 
 <p align="center">
-Figure: AC Frequency Response – Plot 1
-</p>
-
-<p align="center">
-<img src="Experiment-01-CS-Amplifier/ac-analysis%202.jpeg" width="750">
-</p>
-
-<p align="center">
-Figure: AC Frequency Response – Plot 2
+<img src="https://github.com/jeevankamsagar-2006/Jeevan_Kamsagar_H_LIC/blob/58adf187a181793e98582104eff58aaa8e2d0759/Experiment-01-CS-Amplifier/ac-analysis%202.jpeg" width="750">
 </p>
 
 ---
 
-# Comparison Between Theory and Simulation
+# Reasons for Practical Variations
 
-Minor differences occur due to:
+Differences arise due to:
 
 - Channel length modulation  
 - Finite output resistance  
-- Parasitic capacitances  
+- Gate-drain capacitance (Miller effect)  
+- Drain-bulk capacitance  
 - Mobility degradation  
-- BSIM physical model effects  
+- Velocity saturation  
+- Advanced BSIM model effects  
 
-The theoretical model assumes ideal square-law behavior.
+Total output capacitance:
+
+<p align="center">
+C<sub>total</sub> = C<sub>L</sub> + C<sub>gd</sub> + C<sub>db</sub>
+</p>
+
+Effective capacitance slightly increases, shifting pole frequency.
 
 ---
 
-# Results Table
+# Final Results Table
 
-| Parameter | Value |
-|-----------|--------|
-| ID | **200 µA** |
-| RD | **4.5 kΩ** |
-| gm | **0.749 mS** |
-| Gain | **−3.37** |
-| Gain (dB) | **10.55 dB** |
-| 3dB Frequency | **3.53 MHz** |
-| Unity Gain Bandwidth | **11.9 MHz** |
+| Parameter | Theory | Simulation | Error |
+|-----------|----------|------------|--------|
+| ID | 200 µA | 201.649 µA | 0.82% |
+| RD | 4.5 kΩ | 4.5 kΩ | 0% |
+| gm | 0.749 mS | ≈0.74 mS | ~1% |
+| Gain | −3.37 | −3.3 | 2.07% |
+| 3dB Freq | 3.53 MHz | ≈3.3 MHz | <5% |
+| UGB | 11.9 MHz | ≈11–12 MHz | <5% |
 
 ---
 
 # Inference
 
-The Common Source amplifier was successfully designed under the given power constraint. The transistor operates in saturation ensuring linear amplification. The theoretical and simulated gains closely match. The bandwidth is governed by the RC network at the drain node.
+The Common Source amplifier satisfies the power constraint and operates in the saturation region. Theoretical and simulated values closely match. Minor deviations are due to physical non-idealities included in the BSIM device model. The bandwidth is controlled by the RC network at the drain node.
 
 ---
 
 # Conclusion
 
-The CS amplifier using TSMC 180nm technology was successfully designed and analyzed. DC biasing, transient amplification, and AC frequency behavior were verified. The experiment demonstrates the relationship between bias current, gain, and bandwidth in analog CMOS design.
+The Common Source amplifier using TSMC 180nm technology was successfully designed and validated. DC biasing, transient gain, and AC frequency response confirm correct amplifier operation. The experiment demonstrates the direct relationship between bias current, gain, and bandwidth in CMOS analog circuit design.
