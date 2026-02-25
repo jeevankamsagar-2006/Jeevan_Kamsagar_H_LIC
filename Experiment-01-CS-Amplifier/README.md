@@ -56,7 +56,7 @@ And to evaluate:
 # Circuit Diagram
 
 <p align="center">
-<img src="Experiment-01-CS-Amplifier/dc-analysis.jpeg" width="750">
+<img src="https://github.com/jeevankamsagar-2006/Jeevan_Kamsagar_H_LIC/blob/e47105fa44cfbfe675f905352982fe2524b36743/Experiment-01-CS-Amplifier/dc-analysis.jpeg" width="750">
 </p>
 
 <p align="center">
