@@ -165,14 +165,7 @@ A $1kHz$ sine wave with $10mV$ amplitude ($20mV$ p-p) was applied.
 
 Voltage Gain:
 
-$$
-A_v
-===
-
-# \frac{0.25}{0.0199}
-
-\mathbf{13.15}
-$$
+$$A_v=\frac{0.25}{0.0199}=\mathbf{13.15}$$
 
 The output signal is amplified and phase inverted, as expected from a common-source amplifier.
 
