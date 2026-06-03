@@ -134,7 +134,7 @@ To support the same drain current:
 
 The schematic below was constructed in LTspice using the `tsmc018.lib` library.
 
-![Circuit Schematic](common_source_schematic.jpeg)
+![Circuit Schematic](circuit2.jpeg)
 
 ---
 
@@ -144,7 +144,7 @@ The schematic below was constructed in LTspice using the `tsmc018.lib` library.
 
 The simulation was performed to verify the quiescent points ($I_D$ and $V_{out}$).
 
-![DC Operating Point](dc_operating_point.jpeg)
+![DC Operating Point](dc_analysis2.jpeg)
 
 * **Simulated $I_D$:** $506 \mu A$
 * **Simulated $V_{out}$:** $1.104V$
@@ -158,7 +158,7 @@ These values closely match the design targets.
 
 A $1kHz$ sine wave with $10mV$ amplitude ($20mV$ p-p) was applied.
 
-![Transient Response Waveform](transient_response_waveform.jpeg)
+![Transient Response Waveform](transient2_1.jpeg)
 
 * **$V_{in(p-p)}$:** $19.99mV$
 * **$V_{out(p-p)}$:** $0.25V$
@@ -182,7 +182,7 @@ The output signal is amplified and phase inverted, as expected from a common-sou
 
 The frequency response was analyzed with a $10pF$ load capacitor.
 
-![Frequency Response Bode Plot](frequency_response_bode.jpeg)
+![Frequency Response Bode Plot](ac_analysis2.jpeg)
 
 * **Mid-band Gain:** $21.95dB$
 * **3dB Bandwidth:** $2.276MHz$
